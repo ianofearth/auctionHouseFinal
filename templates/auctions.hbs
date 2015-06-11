@@ -1,0 +1,8 @@
+<h2>Auctions</h2>
+<ul>
+  {{#each}}
+    <li>{{#link-to 'auction' this.id}}{{title}}{{/link-to}}</li>
+  {{/each}}
+</ul>
+
+<p>{{#link-to 'new-auction' classNames="btn btn-primary"}}Add a New Auction{{/link-to}}</p>

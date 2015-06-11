@@ -1,0 +1,65 @@
+<h1>{{title}}</h1>
+<h2>{{identifier}}</h2>
+<h4>Click image to view additional details</h4>
+{{#if isEditing}}
+<form>
+  <div class="form-group">
+    <label for="title">Title: </label>
+    {{input id="title" class="form-control" value=title}}
+  </div>
+
+  <div class="form-group">
+    <label for="identifier">Describe your auction here: </label>
+    {{textarea id="identifier" class="form-control" rows="15" value=identifier}}
+  </div>
+  <button class="btn btn-primary" {{action 'save'}}>Save</button>
+</form>
+
+{{else}}
+
+{{#each items as |item|}}
+<div class="containerItem">
+  <div class="row">
+    <div class="col-md-6">
+      <p>Item Name: {{item.name}}</p>
+      <p>Bid Number: {{item.bidNumber}}</p>
+      <p>Starting Price: {{item.startPrice}}</p>
+    </div>
+    <div class="col-md-6">
+      {{#link-to 'item' item.id}}
+        <img class="auction-image" {{bind-attr src=item.image }}>
+      {{/link-to}}
+
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>
+{{/each}}
+
+{{/if}}
+
+
+
+
+
+<p>{{#link-to 'new-item' this.id class="btn btn-default"}}Add New Item to Auction{{/link-to}}</p>
+
+{{outlet}}
+
+<button class="btn btn-primary" {{action 'edit'}}>Edit this Auction's Information</button>
+<button class="btn btn-danger" {{action 'delete'}}>Delete this Auction</button>
+
+
+
+
+
+<!-- {{#each items as |item|}}
+{{#link-to 'item' item.id}}
+  <p>Item Name: {{item.name}}</p>
+  <p>Bid Number: {{item.bidNumber}}</p>
+  <p>Starting Price: {{item.startPrice}}</p>
+  <p>Image: <img {{bind-attr src=item.image }}></p>
+{{/link-to}}
+{{/each}} -->
