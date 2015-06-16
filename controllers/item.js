@@ -23,8 +23,7 @@ Auction.ItemController = Ember.ObjectController.extend({
         auction.save();
         item.destroyRecord();
 
-        this.transitionToRoute('auction', auction.id); //auction.id needed?
-
+        this.transitionToRoute('auction', auction.id);
       }
     }
   }
